@@ -1,0 +1,19 @@
+name: Feature
+description: A change to the modules or examples.
+title: "Feature: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: What should change
+      description: Say which module is affected. Do not include credentials or live resource IDs.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+    validations:
+      required: true

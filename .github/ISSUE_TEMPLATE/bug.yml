@@ -1,0 +1,19 @@
+name: Bug
+description: A module or example does not behave as the README describes.
+title: "Bug: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Include the OpenTofu and aliyun/alicloud versions. Do not paste credentials, state or customer identifiers.
+    validations:
+      required: true
+  - type: textarea
+    id: expect
+    attributes:
+      label: What you expected
+    validations:
+      required: true

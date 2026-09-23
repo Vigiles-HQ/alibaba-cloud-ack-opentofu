@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: Alibaba Cloud ACK OpenTofu Modules
+message: If you use this software, please cite it using these metadata.
+type: software
+authors:
+  - given-names: Ankit
+    family-names: Mehta
+  - name: Vigiles Pte. Ltd.
+    alias: VigilesHQ
+    website: https://vigileshq.com/
+repository-code: https://github.com/Vigiles-HQ/alibaba-cloud-ack-opentofu
+url: https://www.cloudarchpro.com/guides/kubernetes-and-containers/building-secure-alibaba-ack/
+abstract: >-
+  OpenTofu modules for private Alibaba Cloud ACK clusters with multi-zone
+  networking, secure node pools, controlled egress, remote state and GitOps.
+license: Apache-2.0
+version: 1.0.0
+date-released: 2026-09-23

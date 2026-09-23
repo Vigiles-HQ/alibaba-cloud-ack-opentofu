@@ -1,0 +1,12 @@
+bucket              = "example-platform-tfstate"
+prefix              = "platform-foundation/production-cluster"
+key                 = "terraform.tfstate"
+region              = "ap-southeast-1"
+endpoint            = "oss-ap-southeast-1.aliyuncs.com"
+tablestore_endpoint = "https://example-locks.ap-southeast-1.ots.aliyuncs.com"
+tablestore_table    = "opentofu_lock"
+encrypt             = true
+acl                 = "private"
+
+# Keep ALICLOUD_ACCESS_KEY, ALICLOUD_SECRET_KEY and ALICLOUD_SECURITY_TOKEN
+# in the environment. This file is backend configuration only.

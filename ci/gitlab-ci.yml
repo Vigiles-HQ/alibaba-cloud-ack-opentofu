@@ -1,0 +1,63 @@
+# Credentials stay in CI variables: ALICLOUD_ACCESS_KEY, ALICLOUD_SECRET_KEY,
+# ALICLOUD_SECURITY_TOKEN and ALICLOUD_REGION. Do not echo them.
+# State is read from OSS during plan. Do not publish a tfstate artifact.
+
+stages:
+  - plan
+  - apply
+
+.stack:
+  image: ghcr.io/opentofu/opentofu:1.12.6
+  variables:
+    TF_IN_AUTOMATION: "true"
+    TF_INPUT: "0"
+  resource_group: "ack-$STACK_NAME"
+  before_script:
+    - cd "$STACK_DIR"
+    - tofu init -input=false -backend=true
+      -backend-config="bucket=$TF_STATE_BUCKET"
+      -backend-config="region=$ALICLOUD_REGION"
+      -backend-config="prefix=platform-foundation/$STACK_NAME"
+      -backend-config="key=terraform.tfstate"
+      -backend-config="encrypt=true"
+      -backend-config="acl=private"
+      -backend-config="tablestore_endpoint=$TF_TABLESTORE_ENDPOINT"
+      -backend-config="tablestore_table=$TF_TABLESTORE_TABLE"
+
+plan:
+  extends: .stack
+  stage: plan
+  parallel:
+    matrix:
+      - STACK_NAME: production-network
+        STACK_DIR: examples/production/network
+      - STACK_NAME: production-egress
+        STACK_DIR: examples/production/egress
+      - STACK_NAME: production-cluster
+        STACK_DIR: examples/production/cluster
+      - STACK_NAME: production-argocd
+        STACK_DIR: examples/production/argocd
+  script:
+    - tofu plan -input=false -lock=true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+apply:
+  extends: .stack
+  stage: apply
+  when: manual
+  parallel:
+    matrix:
+      - STACK_NAME: production-network
+        STACK_DIR: examples/production/network
+      - STACK_NAME: production-egress
+        STACK_DIR: examples/production/egress
+      - STACK_NAME: production-cluster
+        STACK_DIR: examples/production/cluster
+      - STACK_NAME: production-argocd
+        STACK_DIR: examples/production/argocd
+  script:
+    - tofu plan -input=false -lock=true -out=plan.bin
+    - tofu apply -input=false plan.bin
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <title>Alibaba Cloud ACK OpenTofu Modules</title>
+  <desc>Social preview for private Alibaba Cloud ACK OpenTofu modules. Independent project. Not an official Alibaba Cloud repository.</desc>
+  <rect width="1280" height="640" fill="#F4F4F5"/>
+  <rect x="0" y="0" width="12" height="640" fill="#0F766E"/>
+  <text x="72" y="220" font-family="Helvetica, Arial, sans-serif" font-size="48" font-weight="600" fill="#18181B">Alibaba Cloud ACK</text>
+  <text x="72" y="280" font-family="Helvetica, Arial, sans-serif" font-size="48" font-weight="600" fill="#18181B">OpenTofu Modules</text>
+  <text x="72" y="360" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#3F3F46">Private clusters</text>
+  <text x="340" y="360" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#3F3F46">Multi-zone networking</text>
+  <text x="72" y="410" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#3F3F46">Secure node pools</text>
+  <text x="340" y="410" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#3F3F46">Remote state</text>
+  <text x="72" y="560" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#52525B">VigilesHQ · CloudArch Pro</text>
+  <text x="72" y="590" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#71717A">Independent project. Not an official Alibaba Cloud repository.</text>
+</svg>

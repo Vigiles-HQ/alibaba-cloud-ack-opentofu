@@ -1,0 +1,25 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: 1.12.6
+      # validate.sh runs fmt, file length, forbidden files, secret patterns,
+      # shell syntax, tofu init -backend=false, tofu validate and contract tests.
+      # It does not apply infrastructure or call Alibaba Cloud.
+      - run: ./scripts/validate.sh
